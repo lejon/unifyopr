@@ -3,9 +3,7 @@
 \name{\%<->\%}
 \alias{\%<->\%}
 \title{unify operator}
-\usage{
-\%>\%(lhs, rhs) <- value
-}
+
 \arguments{
 \item{lhs}{A vector of variables to be bound to corresponding values in right hand side}
 
