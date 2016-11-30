@@ -15,11 +15,10 @@ The unifiy operator (%<->%) is a convenience operator for unifying a left hand s
 
 ```{r}
 library(unifyopr)
-apa <- c(10,11,12)
+tst <- c(10,11,12)
 
-c(h,i,j) %<->% apa
+c(h,i,j) %<->% tst
 
-get("h")
 cat("h is: ", h, "\n")
 cat("i is: ", i, "\n")
 cat("j is: ", j, "\n")
