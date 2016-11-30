@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lejon/unifyopr.svg?branch=master)](https://travis-ci.org/lejon/unifyopr)
+
 # unifyopr
 A unify operator for R
 
