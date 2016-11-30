@@ -1,0 +1,17 @@
+Package: unifyopr
+Type: Package
+Title: New operator for unifying left hand side with right hand side of operator
+Version: 0.1.0
+Authors@R: c(person("Leif", "Jonsson", email = "leif.jonsson@gmail.com", role = c("aut", "cre")))
+Maintainer: Leif Jonsson <leif.jonsson@gmail.com>
+Description: The unify operator emulates unifying a left hand side of unbound variables
+    with a right hand side of values. It saves code for unpacking lists, and vectors.
+License: BSD_2_clause + file LICENSE
+LazyData: TRUE
+Encoding: UTF-8
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat
+VignetteBuilder: knitr
+RoxygenNote: 5.0.1
