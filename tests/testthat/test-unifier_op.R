@@ -1,5 +1,18 @@
 context('testing basics of unifier op:')
 
+test_that("invalid LHS",{
+  expect_error(data.frame(a=c(1,2,3)) %<->% tmp1)
+  expect_error(matrix(c(1,2,3)) %<->% tmp1)
+})
+
+test_that("LHS named list",{
+  tmp1 <- c(10, 11, 12)
+  ll <- list(a=h, b=i, c=j) %<->% tmp1
+  expect_identical(h, tmp1[1], "Component 1 does not match")
+  expect_identical(i, tmp1[2], "Component 2 does not match")
+  expect_identical(j, tmp1[3], "Component 3 does not match")
+})
+
 test_that("list form",{
   tmp1 <- c(10, 11, 12)
   ll <- list(h, i, j) %<->% tmp1

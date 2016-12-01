@@ -9,6 +9,12 @@ make_operator <- function(args) {
     theop <- lhs[[1]]
     sym <- lhs[[2]]
     unifier <- lhs[[3]]
+
+    strtype <- toString(sym[1])
+    if(!(strtype=="list"||strtype=="c")) {
+      stop("unify operator (%<->%) only supports 'list' or 'c' on left hand side")
+    }
+
     unifier <- eval(unifier,envir = parent)
     for(i in 2:length(sym)) {
       strform <- as.character(sym[[i]])
