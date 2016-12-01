@@ -23,6 +23,10 @@ make_operator <- function(args) {
         assign(strform, unifier[i-1], envir=parent)
       }
     }
+
+    # return value is left hand side, evaluated with the new
+    # variables bound
+    eval(sym,envir = parent)
   }
 }
 

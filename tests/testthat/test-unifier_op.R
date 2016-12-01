@@ -1,5 +1,23 @@
 context('testing basics of unifier op:')
 
+test_that("list form",{
+  tmp1 <- c(10, 11, 12)
+  ll <- list(h, i, j) %<->% tmp1
+  expect_identical(h, tmp1[1], "Component 1 does not match")
+  expect_identical(i, tmp1[2], "Component 2 does not match")
+  expect_identical(j, tmp1[3], "Component 3 does not match")
+  expect_identical(ll, list(10, 11, 12), "Assignment does not match")
+})
+
+test_that("vector form with assignment",{
+  tmp1 <- c(10, 11, 12)
+  cc <- c(h, i, j) %<->% tmp1
+  expect_identical(h, tmp1[1], "Component 1 does not match")
+  expect_identical(i, tmp1[2], "Component 2 does not match")
+  expect_identical(j, tmp1[3], "Component 3 does not match")
+  expect_identical(cc, c(10, 11, 12), "Assignment does not match")
+})
+
 test_that("unification with vector variable",{
   tmp1 <- c(10, 11, 12)
   c(h, i, j) %<->% tmp1
