@@ -10,6 +10,11 @@ make_operator <- function(args) {
     sym <- lhs[[2]]
     unifier <- lhs[[3]]
 
+    if(length(sym) == 1) {
+      stop("A vector or list of variables is required on its left hand side\n",
+           "e.g. c(h, i, j) %<->% c(10, 11, 12)")
+    }
+
     strtype <- toString(sym[1])
     if(!(strtype=="list"||strtype=="c")) {
       stop("unify operator (%<->%) only supports 'list' or 'c' on left hand side")
@@ -32,7 +37,7 @@ make_operator <- function(args) {
 
     # return value is left hand side, evaluated with the new
     # variables bound
-    eval(sym,envir = parent)
+    invisible(eval(sym,envir = parent))
   }
 }
 
