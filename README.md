@@ -5,52 +5,65 @@ A unify operator for R
 # Docs
 The unifiy operator (%<->%) is a convenience operator for unifying a left hand side (LHS) with a right hand side (RHS). This is sometimes very convenient for reducing the amount of code needed for extracting items from vectors and lists. It emulates the MATLAB paradigm '[V,L] = eig(A);' where V and L are directly assigned the values of the resulting entries in the RHS. Strictly speaking it does not 'unify' since it follows the standard R paradigm with copy-on-modify.
 
-The unify operator currently supports extracting data from vectors, lists and data.frames. It currently does NOT work correctly with matrices.
-
+The unify operator currently supports extracting data from vectors, lists, matrices and data.frames. 
 # Examples
 
 Extracting from vectors variables.
 ```r
-tst <- c(10,11,12)
+> tst <- c(10,11,12)
 
-c(h,i,j) %<->% tst
+> c(h,i,j) %<->% tst
 
-cat("h is: ", h, "\n")
+> cat("h is: ", h, "\n")
 h is:  10 
-cat("i is: ", i, "\n")
+> cat("i is: ", i, "\n")
 i is:  11 
-cat("j is: ", j, "\n")
+> cat("j is: ", j, "\n")
 j is:  12 
 ```
 
 Extracting from named lists.
 ```r
-cat1 <- list(d1="hej", d2="hopp", d3="lingon")
-c(k,l,m) %<->% cat1
+> cat1 <- list(d1="hej", d2="hopp", d3="lingon")
+> c(k,l,m) %<->% cat1
 
-cat("k is: ", k, "\n")
+> cat("k is: ", k, "\n")
 k is:  hej 
-cat("l is: ", l, "\n")
+> cat("l is: ", l, "\n")
 l is:  hopp 
-cat("m is: ", m, "\n")
+> cat("m is: ", m, "\n")
 m is:  lingon 
 ```
 
 Extracting directly from vectors.
 ```r
-c(a,b,c) %<->% c(10,11,12)
+> c(a,b,c) %<->% c(10,11,12)
 
-cat("a is: ", a, "\n")
+> cat("a is: ", a, "\n")
 a is:  10 
-cat("b is: ", b, "\n")
+> cat("b is: ", b, "\n")
 b is:  11 
-cat("c is: ", c, "\n")
+> cat("c is: ", c, "\n")
 c is:  12 
+```
+
+Extracting directly from vectors.
+```r
+> A = matrix(c(6, 2, 0, 2, 6, 0, 0, 0, 36), nrow = 3)
+> cc <- c(h, i, j) %<->% A
+> h
+[1] 6 2 0
+> i
+[1] 2 6 0
+> j
+[1]  0  0 36
+> cc
+[1]  6  2  0  2  6  0  0  0 36
 ```
 
 Extracting variables from data.frame.
 ```r
-ll <- c(a,b,c) %<->% mtcars
+> ll <- c(a,b,c) %<->% mtcars
 
 > a
  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4 10.4 14.7
@@ -74,29 +87,29 @@ ll <- c(a,b,c) %<->% mtcars
 
 Extracting variables from expressions.
 ```r
-A = matrix(c(6, 2, 0, 2, 6, 0, 0, 0, 36), nrow = 3)
-c(L,V) %<->% eigen(A, symmetric=T)
+> A = matrix(c(6, 2, 0, 2, 6, 0, 0, 0, 36), nrow = 3)
+> c(L,V) %<->% eigen(A, symmetric=T)
 
-cat("V is:\n")
-str(V)
+> cat("V is:\n")
+> str(V)
 V is: 
  num [1:3, 1:3] 0 0 1 0.707 0.707 ...
-cat("L is: ", L, "\n")
+> cat("L is: ", L, "\n")
 L is: 
  num [1:3] 36 8 4
 
-BB = V %*% diag(L) %*% t(V)
-str(BB)
+> BB = V %*% diag(L) %*% t(V)
+> str(BB)
 BB: 6 2 0 2 6 0 0 0 36
 ```
 
 Extracting data.frames from list.
 ```r
-ds <- list(e1=mtcars, e2=iris)
-c(crs, irs) %<->% ds
+> ds <- list(e1=mtcars, e2=iris)
+> c(crs, irs) %<->% ds
 
 # crs now contains the mtcars dataset 
 # irs now contains the iris dataset
-plot(irs$Petal.Length, irs$Petal.Width, pch=21,bg=c("red","green3","blue")[unclass(iris$Species)], main="Edgar Anderson's Iris Data")
+> plot(irs$Petal.Length, irs$Petal.Width, pch=21,bg=c("red","green3","blue")[unclass(iris$Species)], main="Edgar Anderson's Iris Data")
 ```
 
