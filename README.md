@@ -47,7 +47,7 @@ b is:  11
 c is:  12 
 ```
 
-Extracting directly from vectors.
+Extracting from matrices.
 ```r
 > A = matrix(c(6, 2, 0, 2, 6, 0, 0, 0, 36), nrow = 3)
 > cc <- c(h, i, j) %<->% A
