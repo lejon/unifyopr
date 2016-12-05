@@ -48,8 +48,8 @@ make_operator <- function(args) {
 #' The unify operator takes on its left hand side a vector of variable names to be bound
 #' to the corresponding values on the right hand side.
 #'
-#' @param lhs A vector of variables to be bound to corresponding values in right hand side
-#' @param rhs A vector or list of values to be copied to the left hand side
+#' @param lhs A vector or list of variables to be bound to corresponding values in right hand side
+#' @param rhs A vector, list, matrix or data.frames of values to be copied to the left hand side
 #'
 #' @export
 #'
@@ -61,6 +61,17 @@ make_operator <- function(args) {
 #' c(k, l, m) %<->% cat1
 #'
 #' c(a, b, c) %<->% c(10, 11, 12)
+#'
+#' A = matrix(c(6, 2, 0, 2, 6, 0, 0, 0, 36), nrow = 3)
+#' cc <- c(h, i, j) %<->% A
+#'
+#' ll <- c(a,b,c) %<->% mtcars
+#'
+#' A = matrix(c(6, 2, 0, 2, 6, 0, 0, 0, 36), nrow = 3)
+#' c(L,V) %<->% eigen(A, symmetric=T)
+#'
+#' ds <- list(e1=mtcars, e2=iris)
+#' c(crs, irs) %<->% ds
 `%<->%` <- make_operator()
 
 

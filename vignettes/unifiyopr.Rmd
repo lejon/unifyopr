@@ -13,6 +13,8 @@ vignette: >
 
 The unifiy operator (%<->%) is a convenience operator for unifying a left hand side (LHS) with a right hand side (RHS). This is sometimes very convenient for reducing the amount of code needed for extracting items from vectors and lists. It emulates the MATLAB paradigm '[V,L] = eig(A);' where V and L are directly assigned the values of the resulting entries in the RHS. Strictly speaking it does not 'unify' since it follows the standard R paradigm with copy-on-modify.
 
+The unify operator currently supports extracting data from vectors, lists, matrices and data.frames.
+
 ```{r}
 library(unifyopr)
 tst <- c(10,11,12)
@@ -35,6 +37,23 @@ c(a,b,c) %<->% c(10,11,12)
 cat("a is: ", a, "\n")
 cat("b is: ", b, "\n")
 cat("c is: ", c, "\n")
+
+A = matrix(c(6, 2, 0, 2, 6, 0, 0, 0, 36), nrow = 3)
+cc <- c(h, i, j) %<->% A
+cat(h)
+
+cat(i)
+
+cat(j)
+
+cat(cc)
+
+ll <- c(a,b,c) %<->% mtcars
+
+cat(a)
+cat(b)
+cat(c)
+cat(ll)
 
 tt1 <- function(astr) {
   tmp1 <- list(e1=astr, e2=10)
