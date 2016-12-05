@@ -22,6 +22,22 @@ test_that("list form",{
   expect_identical(ll, list(10, 11, 12), "Assignment does not match")
 })
 
+test_that("data.frame form",{
+  ll <- c(a,b,c) %<->% mtcars
+  expect_identical(a, mtcars[,1], "Component 1 does not match")
+  expect_identical(b, mtcars[,2], "Component 2 does not match")
+  expect_identical(c, mtcars[,3], "Component 3 does not match")
+  expect_identical(ll, c(21,21,22.8,21.4,18.7,18.1,14.3,24.4,22.8,19.2,17.8,16.4,17.3,15.2,10.4,10.4,14.7,32.4,30.4,33.9,21.5,15.5,15.2,13.3,19.2,27.3,26,30.4,15.8,19.7,15,21.4,6,6,4,6,8,6,8,4,4,6,6,8,8,8,8,8,8,4,4,4,4,8,8,8,8,4,4,4,8,6,8,4,160,160,108,258,360,225,360,146.7,140.8,167.6,167.6,275.8,275.8,275.8,472,460,440,78.7,75.7,71.1,120.1,318,304,350,400,79,120.3,95.1,351,145,301,121), "Assignment does not match")
+})
+
+test_that("data.frame form with list LHS",{
+  ll <- list(a,b,c) %<->% mtcars
+  expect_identical(a, mtcars[,1], "Component 1 does not match")
+  expect_identical(b, mtcars[,2], "Component 2 does not match")
+  expect_identical(c, mtcars[,3], "Component 3 does not match")
+  expect_identical(ll, list(c(21,21,22.8,21.4,18.7,18.1,14.3,24.4,22.8,19.2,17.8,16.4,17.3,15.2,10.4,10.4,14.7,32.4,30.4,33.9,21.5,15.5,15.2,13.3,19.2,27.3,26,30.4,15.8,19.7,15,21.4),c(6,6,4,6,8,6,8,4,4,6,6,8,8,8,8,8,8,4,4,4,4,8,8,8,8,4,4,4,8,6,8,4),c(160,160,108,258,360,225,360,146.7,140.8,167.6,167.6,275.8,275.8,275.8,472,460,440,78.7,75.7,71.1,120.1,318,304,350,400,79,120.3,95.1,351,145,301,121)), "Assignment does not match")
+})
+
 test_that("vector form with assignment",{
   tmp1 <- c(10, 11, 12)
   cc <- c(h, i, j) %<->% tmp1
