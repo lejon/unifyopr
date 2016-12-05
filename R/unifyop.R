@@ -23,7 +23,9 @@ make_operator <- function(args) {
     unifier <- eval(unifier,envir = parent)
     for(i in 2:length(sym)) {
       strform <- as.character(sym[[i]])
-      if(is.list(unifier[i-1])) {
+      if(class(unifier) == "matrix") {
+        assign(strform, unifier[,i-1], envir=parent)
+      }else if(is.list(unifier[i-1])) {
         # Unpack lists of length 1
         if(length(unifier[i-1]) == 1) {
           assign(strform, unifier[[i-1]], envir=parent)

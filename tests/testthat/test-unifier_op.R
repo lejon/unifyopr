@@ -47,6 +47,15 @@ test_that("vector form with assignment",{
   expect_identical(cc, c(10, 11, 12), "Assignment does not match")
 })
 
+test_that("matrix form",{
+  A = matrix(c(6, 2, 0, 2, 6, 0, 0, 0, 36), nrow = 3)
+  cc <- c(h, i, j) %<->% A
+  expect_identical(h, A[,1], "Component 1 does not match")
+  expect_identical(i, A[,2], "Component 2 does not match")
+  expect_identical(j, A[,3], "Component 3 does not match")
+  expect_identical(cc, c(6,2,0,2,6,0,0,0,36), "Assignment does not match")
+})
+
 test_that("unification with vector variable",{
   tmp1 <- c(10, 11, 12)
   c(h, i, j) %<->% tmp1
